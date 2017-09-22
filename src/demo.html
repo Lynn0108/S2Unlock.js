@@ -3,51 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>slide to unlock</title>
-	<style>
-		*{
-			margin: 0;
-			padding: 0;
-		}
-		.unlock-wrap {
-			border: 1px solid;
-			position: relative;
-			/*margin-left: 50px;*/
-			background-size: 100%;
-		}
-		.unlock-wrap img {
-			display: block;
-			visibility: hidden;
-		}
-		.unlock-wrap>img {
-			width: 100%;
-		}
-		.unlock-wrap .slide-btn {
-			position: absolute;
-			left: 0;
-			top: 0;
-			background-size: 100%;
-			height: 100%;
-			z-index: 10;
-			/* bottom: 0;
-			margin: auto;
-			margin-left: 5px; */
-		}
-		.unlock-wrap .slide-btn>img{
-			height: 100%;
-		}
-		.unlock-wrap .hint {
-		    height: 100%;
-		    /*line-height: 72px;*/
-		    color: #c0c0c0;
-		    /* width: 240px; */
-		    text-align: center;
-		    /* float: right; */
-		    position: absolute;
-		    margin: auto;
-		    /*left: 94px;*/
-		    right: 0;
-		}
-	</style>
+	<link rel="stylesheet" href="S2Unlock.css">
 </head>
 <body>
 	<div class="unlock-wrap">
@@ -56,6 +12,19 @@
 		<p class="hint">slide to unlock</p>
 	</div>
 
-	<script type="text/javascript" src='main.js'></script>
+	<script type="text/javascript" src='S2Unlock.js'></script>
+	<script>
+		var s2Unlock = new S2Unlock('.unlock-wrap', {
+			slideButton: '.slide-btn',
+			btnColor: '#8dd',
+			// wrapColor: '#61a',
+			slideImgSrc: 'arrow.png',
+			wrapImgSrc: 'bg.png',
+			// callback: function() {
+			// 	alert('???');
+			// }
+		});
+		s2Unlock.init();
+	</script>
 </body>
 </html>

@@ -160,15 +160,3 @@
 		alert('success');
 	}
 
-var s2Unlock = new S2Unlock('.unlock-wrap', {
-	// hint: 'slide to unlock',
-	slideButton: '.slide-btn',
-	btnColor: '#8dd',
-	// wrapColor: '#61a',
-	slideImgSrc: 'arrow.png',
-	wrapImgSrc: 'bg.png',
-	// callback: function() {
-	// 	alert('???');
-	// }
-});
-s2Unlock.init();
