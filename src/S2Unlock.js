@@ -1,22 +1,47 @@
-
+/*
+ * S2Unlock v1.0.0
+ *
+ * A simple 'slide to unlock' javascript plugin
+ * Both picture and background color are valid 
+ * 
+ * https://github.com/Lynn0108/S2Unlock.js
+ * 
+ * Author: Rui Liao 
+ * 
+ * Released on: Sep. 26, 2017
+ */
+(function(window){
+	var isPC = IsPC();
+	function IsPC() {
+	    var userAgentInfo = navigator.userAgent;
+	    var Agents = ["Android", "iPhone",
+	                "SymbianOS", "Windows Phone",
+	                "iPad", "iPod"];
+	    var flag = true;
+	    for (var v = 0; v < Agents.length; v++) {
+	        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+	            flag = false;
+	            break;
+	        }
+	    }
+	    console.log(userAgentInfo);
+	    return flag;
+	}
 	function S2Unlock(el, option) {
+		var _this = this;
 		// outside wrap
 		this.wrap = document.querySelector(el);
 		this.width = option.width || '300';
 		this.height = option.height || '50';
 		this.wrapImg = option.wrapImgSrc || '';
 		this.wrapColor = option.wrapColor || '#089';
-
-		this.standard = option.standard || 'width';
 		// slide button
 		this.slideBtn = this.wrap.querySelector(option.slideButton);
 		this.slideImg = option.slideImgSrc || '';
-		this.btnColor = option.btnColor || '#089';
-		
+		this.btnColor = option.btnColor || '#089';	
 		// this.hint = option.hint || '';
-		
 		this.callback = typeof option.callback == 'function' ? option.callback : this.defaultCallback;
-		this.isPC = false;
+		// this.isPC = false;
 		this.pcEvent = {
 			start: 'mousedown',
 			move: 'mousemove',
@@ -27,12 +52,16 @@
 			move: 'touchmove',
 			end: 'touchend'
 		}
-		// this.endL = this.width - this.slideW;
+		this.init();
 	}
 	S2Unlock.prototype = {
+		constructor: S2Unlock,
 		init: function() {
+			if (!this.wrap || !this.slideBtn) {
+				return ;
+			}
+			// this.initEvent();
 			this.initStyle();
-			this.initEvent();
 		},
 		initStyle: function() {
 			this.wrap.style.width = this.width + 'px';
@@ -95,30 +124,15 @@
 		},
 		initEvent: function() {
 			this.isPC = IsPC();
-			function IsPC() {
-			    var userAgentInfo = navigator.userAgent;
-			    var Agents = ["Android", "iPhone",
-			                "SymbianOS", "Windows Phone",
-			                "iPad", "iPod"];
-			    var flag = true;
-			    for (var v = 0; v < Agents.length; v++) {
-			        if (userAgentInfo.indexOf(Agents[v]) > 0) {
-			            flag = false;
-			            break;
-			        }
-			    }
-			    console.log(userAgentInfo);
-			    return flag;
-			}
 		},
 		bindEvent: function() {
 			var _this = this;
 			var endL = this.endL;
 			var startX = 0;
 			var nowX = 0;
-			var startE = this.isPC ? this.pcEvent.start : this.phoneEvent.start;
-			var moveE = this.isPC ? this.pcEvent.move : this.phoneEvent.move;
-			var endE = this.isPC ? this.pcEvent.end : this.phoneEvent.end;
+			var startE = isPC ? this.pcEvent.start : this.phoneEvent.start;
+			var moveE = isPC ? this.pcEvent.move : this.phoneEvent.move;
+			var endE = isPC ? this.pcEvent.end : this.phoneEvent.end;
 			this.slideBtn.addEventListener(startE, startHandler, false);
 			// this.slideBtn.addEventListener(_this.event.move, moveHandler, false);
 			this.slideBtn.addEventListener(endE, endHandler, false);
@@ -159,5 +173,6 @@
 			alert('success');
 		}
 	}
-
+	window.S2Unlock = S2Unlock;
+})(window);
 

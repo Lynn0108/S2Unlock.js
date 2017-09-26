@@ -1,0 +1,47 @@
+.unlock-wrap {
+	margin: 0;
+	padding: 0;
+	border: 1px solid;
+	position: relative;
+	background-size: 100%;
+
+	img {
+		display: block;
+		visibility: hidden;
+	}
+
+	.slide-btn {
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-size: 100%;
+		height: 100%;
+		z-index: 10;
+		cursor: pointer;
+
+		img {
+			height: 100%;
+		}
+	}
+
+	.hint {
+	    height: 100%;
+	    color: #000;
+	    text-align: center;
+	    position: absolute;
+	    margin: auto;
+	    right: 0;
+	}
+	.hint::selection {
+	    background:transparent; 
+	}
+	.hint::-moz-selection {
+	    background:transparent; 
+	}
+	.hint::-webkit-selection {
+	    background:transparent; 
+	}
+}
+.unlock-wrap>img {
+	width: 100%;
+}

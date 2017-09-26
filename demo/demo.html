@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slide to unlock</title>
+	<link rel="stylesheet" href="../dist/S2Unlock.css">
+	<style>
+		#wrap {
+			width: 302px;
+			height: 280px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.ul2, .ul3 {
+			margin-top: 50px;
+		}
+		.ul2 .hint {
+			color: #c0c0c0;
+		}
+		.ul3 {
+			border-radius: 9px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="unlock-wrap ul1">
+			<div class="slide-btn"></div>
+			<p class="hint">slide to unlock</p>
+		</div>
+		<div class="unlock-wrap ul2">
+			<div class="slide-btn"></div>
+			<p class="hint">slide to unlock</p>
+		</div>
+		<div class="unlock-wrap ul3">
+			<div class="slide-btn"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src='../dist/S2Unlock.min.js'></script>
+	<script>
+		var s2u1 = new S2Unlock('.ul1', {
+			slideButton: '.slide-btn',
+			slideImgSrc: '../image/arrow.png',
+			wrapImgSrc: '../image/bg.png',
+		});
+		var s2u2 = new S2Unlock('.ul2', {
+			slideButton: '.slide-btn',
+			btnColor: '#8dd',
+			wrapColor: '#8df',
+		});
+		var s2u3 = new S2Unlock('.ul3', {
+			slideButton: '.slide-btn',
+			slideImgSrc: '../image/arrow.png',
+			wrapColor: '#000',
+		});
+	</script>
+</body>
+</html>
